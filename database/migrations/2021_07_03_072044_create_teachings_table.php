@@ -21,14 +21,11 @@ class CreateTeachingsTable extends Migration
             $table->char('teachings_subject', 100)->nullable();
             $table->string('teachings_signature')->nullable();
             $table->string('teachings_note')->nullable();
-            $table->binary('teachings_image')->nullable();
+            $table->string('teachings_image')->nullable();
             $table->foreignId('classrooms_id')->nullable();
             $table->foreignId('users_id')->nullable();
             $table->timestamps();
         });
-        // DB::statement("ALTER TABLE `teachings` CHANGE `teachings_image` `teachings_image` MEDIUMBLOB NULL DEFAULT NULL;");
-        // DB::statement("ALTER TABLE teachings ALTER COLUMN teachings_image TYPE MEDIUMBLOB");
-
     }
 
     /**

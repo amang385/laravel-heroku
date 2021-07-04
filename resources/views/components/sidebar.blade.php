@@ -60,12 +60,12 @@
           </a>
         </li>
         @if (Auth()->user()->type === 1)
-        <li class="">
+        {{-- <li class="">
           <a href="../examples/dashboard.html">
             <i class="nc-icon nc-chart-bar-32"></i>
             <p>Report</p>
           </a>
-        </li>
+        </li> --}}
         @endif
       </ul>
     </div>

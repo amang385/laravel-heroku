@@ -26,6 +26,12 @@ class ClassroomController extends Controller
      */
     public function create()
     {
+        // $teachings = Teaching::where([
+        //     'classrooms_id' => $id
+        // ])->get();
+
+        // $classroom = Classroom::find($id);
+
         return view('portal/classroom-create');
     }
 
@@ -55,8 +61,10 @@ class ClassroomController extends Controller
             'classrooms_id' => $id
         ])->get();
 
+        $classroom = Classroom::find($id);
+
         // dd($teachings);
-        return view('portal/teaching', compact('teachings', 'id'));
+        return view('portal/teaching', compact('teachings', 'id', 'classroom'));
         
     }
 

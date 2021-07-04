@@ -44,9 +44,11 @@
                       <a href="/portal/classroom/{{$classroom->id}}/teaching" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
                         <i class="fa fa-edit"></i>
                       </a>
+                      @if (Auth()->user()->type == 1)
                       <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm ">
                         <i class="fa fa-times"></i>
                       </button>
+                      @endif
                     </td>
                   </tr>
                   @endforeach
@@ -60,10 +62,20 @@
 @endsection
 @section('script')
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-<script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
+
+<script src="{{asset('assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+@if (Auth()->user()->type == 1)
     <script>
     //   $(document).ready(function() {
       $('#datatable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+           'excel'
+        ],
         "pagingType": "full_numbers",
         "lengthMenu": [
           [10, 25, 50, -1],
@@ -76,28 +88,30 @@
         }
 
       });
+    </script>  
+@else
+    <script>
+      $('#datatable').DataTable({
+        // dom: 'Bfrtip',
+        // buttons: [
+        //    'excel'
+        // ],
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          searchPlaceholder: "Search records",
+        }
 
-      var table = $('#datatable').DataTable();
-
-      // Edit record
-      table.on('click', '.edit', function() {
-        $tr = $(this).closest('tr');
-
-        var data = table.row($tr).data();
-        alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
       });
+</script>
+@endif
+@endsection
 
-      // Delete a record
-      table.on('click', '.remove', function(e) {
-        $tr = $(this).closest('tr');
-        table.row($tr).remove().draw();
-        e.preventDefault();
-      });
-
-      //Like record
-      table.on('click', '.like', function() {
-        alert('You clicked on Like button');
-      });
-    // });
-    </script>
+@section('style')
+<link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css" rel="stylesheet" />
 @endsection

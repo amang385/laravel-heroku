@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header ">
-        <h4 class="card-title">Stacked Form</h4>
+        <h4 class="card-title">เพิ่มข้อมูลชั้นเรียน</h4>
       </div>
       <div class="card-body ">
         <form method="POST" action="{{route('classroom.store')}}">

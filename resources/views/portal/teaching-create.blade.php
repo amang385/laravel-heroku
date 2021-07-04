@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header ">
-        <h4 class="card-title">Stacked Form</h4>
+        <h4 class="card-title">ข้อมูลการสอน {{$classroom->classrooms_name}}</h4>
       </div>
       <div class="card-body ">
         <form method="POST" action="{{route('teaching.store')}}" enctype='multipart/form-data'>
@@ -14,7 +14,7 @@
           <label>วันเวลาเข้าสอน</label>
           <div class="form-group">
             {{-- {{dd( date('d/m/Y h:i:a'))}} --}}
-            <input type="text" class="form-control datetimepicker" name="teachings_datetime" value="{{date('d/m/Y H:i')}}">
+            <input type="text" class="form-control datetimepicker" name="teachings_datetime" value="{{date('d/m/Y H:i')}}" readonly>
           </div>
           <label>คาบ</label>
           <div class="form-group">
@@ -45,7 +45,7 @@
                 <input type="file" name="teachings_image" />
               </span>
               <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-              <small>-ขนาดไฟล์ห้ามเกิน 64 kb</small>
+              <small>-ขนาดไฟล์ไม่ควรเกิน 64 kb</small>
             </div>
           </div>
           <input type="hidden" name="classrooms_id" value="{{$id}}">
