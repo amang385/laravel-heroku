@@ -7,7 +7,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between">
             <h4 class="card-title">ชั้นเรียน</h4>
-            @if (Auth()->user()->type === 1)
+            @if (Auth()->user()->type == 1)
             <a href="{{route('classroom.create')}}" rel="tooltip" class="btn btn-info btn-icon btn-sm float-right">
                 <i class="fa fa-plus"></i>
             </a>
