@@ -27,7 +27,7 @@ class CreateTeachingsTable extends Migration
             $table->timestamps();
         });
         // DB::statement("ALTER TABLE `teachings` CHANGE `teachings_image` `teachings_image` MEDIUMBLOB NULL DEFAULT NULL;");
-        DB::statement("ALTER TABLE teachings ALTER COLUMN teachings_image TYPE MEDIUMBLOB DEFAULT NULL;");
+        DB::statement("ALTER TABLE teachings ALTER COLUMN teachings_image TYPE MEDIUMBLOB");
 
     }
 
