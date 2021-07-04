@@ -1,9 +1,18 @@
 ## on terminal login heroku 
 ```bash
+heroku create app appname
 heroku login
 git push heroku master
 heroku run php artisan command
 heroku run php artisan storage:link 
+
+ heroku pg:credentials:url
+ heroku config:add DB_CONNECTION=pgsql
+ heroku config:add DB_HOST=host
+ heroku config:add DB_PORT= port
+ heroku config:add DB_DATABASE= database
+ heroku config:add DB_USERNAME= username
+ heroku config:add DB_PASSWORD=password 
 ```
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
