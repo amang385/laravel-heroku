@@ -36,8 +36,8 @@ class TeachingController extends Controller
     public function store(Request $request)
     {
 
-        // $file = $request->file('teachings_image');
-        // $contents = $file->openFile()->fread($file->getSize());
+        $file = $request->file('teachings_image');
+        $contents = $file->openFile()->fread($file->getSize());
         // dd($file);
         // if ($file != "") {
         //     $contents = $file->openFile()->fread($file->getSize());
