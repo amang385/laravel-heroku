@@ -37,7 +37,7 @@
               <img src="{{asset('assets/img/image_placeholder.jpg')}}" alt="...">
             </div>
             
-            <div class="fileinput-preview fileinput-exists thumbnail"></div>
+            {{-- <div class="fileinput-preview fileinput-exists thumbnail"></div>
             <div>
               <span class="btn btn-rose btn-round btn-file">
                 <span class="fileinput-new">กรุณาเลือกรูปภาพ</span>
@@ -47,7 +47,7 @@
               <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
               <small>-ขนาดไฟล์ห้ามเกิน 64 kb</small>
             </div>
-          </div>
+          </div> --}}
           <input type="hidden" name="classrooms_id" value="{{$id}}">
           <div class="form-group">
             <button type="submit" class="btn btn-info btn-round">Submit</button>

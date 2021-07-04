@@ -36,8 +36,8 @@ class TeachingController extends Controller
     public function store(Request $request)
     {
 
-        $file = $request->file('teachings_image');
-        $contents = $file->openFile()->fread($file->getSize());
+        // $file = $request->file('teachings_image');
+        // $contents = $file->openFile()->fread($file->getSize());
         // dd($file);
         // if ($file != "") {
         //     $contents = $file->openFile()->fread($file->getSize());
@@ -55,7 +55,8 @@ class TeachingController extends Controller
         $teaching->teachings_signature = $request->teachings_signature;
         $teaching->teachings_note = $request->teachings_note;
         $teaching->classrooms_id = $request->classrooms_id;
-        $teaching->teachings_image = $contents;
+        // $teaching->teachings_image = $contents;
+        $teaching->teachings_image = "";
         $teaching->save();
         return redirect()->route('teaching', ['id'=> $request->classrooms_id]);
     }
