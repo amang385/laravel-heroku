@@ -26,7 +26,9 @@ class CreateTeachingsTable extends Migration
             $table->foreignId('users_id')->nullable();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE teachings CHANGE teachings_image teachings_image MEDIUMBLOB NULL DEFAULT NULL");
+        // DB::statement("ALTER TABLE `teachings` CHANGE `teachings_image` `teachings_image` MEDIUMBLOB NULL DEFAULT NULL;");
+        DB::statement("ALTER TABLE teachings CHANGE teachings_image teachings_image MEDIUMBLOB NULL DEFAULT NULL;");
+
     }
 
     /**
