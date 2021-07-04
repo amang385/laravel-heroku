@@ -79,7 +79,7 @@
                   </tr>
                   @empty
                   <tr>
-                    <td class="text-center" colspan="6">
+                    <td class="text-center" colspan="8">
                       <p>ไม่มีข้อมูล</p>
                     </td>
                   </tr>
