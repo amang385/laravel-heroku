@@ -114,8 +114,10 @@ class TeachingController extends Controller
      * @param  \App\Teaching  $teaching
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teaching $teaching)
+    public function destroy(Teaching $teaching, $id = null)
     {
-        //
+        $teaching = Teaching::find($id);
+        Teaching::destroy($id);
+        return redirect()->route('teaching', ['id' => $teaching->classrooms_id]);
     }
 }

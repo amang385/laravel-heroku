@@ -97,8 +97,10 @@ class ClassroomController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classroom $classroom)
+    public function destroy(Classroom $classroom, $id)
     {
-        //
+        Classroom::destroy($id);
+        return redirect()->route('classroom');
+        
     }
 }

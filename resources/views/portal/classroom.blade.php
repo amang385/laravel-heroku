@@ -24,7 +24,7 @@
                 <th>
                   ชั้นเรียน
                 </th>
-                <th class="text-right">
+                <th class="text-right" width="80">
                   จัดการ
                 </th>
               </thead>
@@ -38,17 +38,25 @@
                       {{$classroom->classrooms_name}}
                     </td>
                     <td class="text-right">
-                      {{-- <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm ">
-                        <i class="fa fa-user"></i>
-                      </button> --}}
-                      <a href="/portal/classroom/{{$classroom->id}}/teaching" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                        <i class="fa fa-edit"></i>
-                      </a>
-                      @if (Auth()->user()->type == 1)
-                      <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm ">
-                        <i class="fa fa-times"></i>
-                      </button>
-                      @endif
+                      <div class="row">
+                          <div class="col-6">
+                            <a href="/portal/classroom/{{$classroom->id}}/teaching" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
+                                <i class="fa fa-edit"></i>
+                              </a>
+                          </div>
+                          <div class="col-6">
+                            @if (Auth()->user()->type == 1)
+                            <form method="POST" action="{{route('classroom.destroy', ['id' => $classroom->id])}}">
+                                @method('delete')
+                                @csrf
+                            <button type="submit" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-submit ">
+                                <i class="fa fa-times"></i>
+                            </button>
+                            </form>
+                            @endif
+                        </div>
+                      </div>
+                     
                     </td>
                   </tr>
                   @endforeach
@@ -68,6 +76,15 @@
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<script>
+    $(".btn-submit").on('click', function(){
+        if ( confirm('คุณแน่ใจว่าต้องการลบ ?') ) {
+            return true
+        } else {
+            return false
+        }
+    })
+</script>
 @if (Auth()->user()->type == 1)
     <script>
     //   $(document).ready(function() {

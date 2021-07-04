@@ -67,11 +67,13 @@
                     </td>
                     <td class="text-right">
                       @if (Auth()->user()->type == 1)
-
-                        <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm ">
-                          <i class="fa fa-times"></i>
+                      <form method="POST" action="{{route('teaching.destroy', ['id' => $teaching->id])}}">
+                          @method('delete')
+                          @csrf
+                        <button type="submit" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-submit ">
+                            <i class="fa fa-times"></i>
                         </button>
-
+                      </form>
                       @endif
                     </td>
                   </tr>
@@ -100,6 +102,15 @@
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<script>
+  $(".btn-submit").on('click', function(){
+      if ( confirm('คุณแน่ใจว่าต้องการลบ ?') ) {
+          return true
+      } else {
+          return false
+      }
+  })
+</script>
 @if (Auth()->user()->type == 1)
     <script>
     //   $(document).ready(function() {

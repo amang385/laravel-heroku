@@ -39,5 +39,9 @@ Route::group(['prefix' => 'portal'], function(){
         Route::get('/dashboard', 'portal\AdminController@index')->name('dashboard');
         Route::get('/classroom/create', 'ClassroomController@create')->name('classroom.create');
         Route::post('/classroom/store', 'ClassroomController@store')->name('classroom.store');
+
+        Route::delete('/teaching/destroy/{id}', 'TeachingController@destroy')->name('teaching.destroy');
+        Route::delete('/classroom/destroy/{id}', 'ClassroomController@destroy')->name('classroom.destroy');
+
     });
 });
