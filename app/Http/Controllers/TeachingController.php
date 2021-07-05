@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Teaching;
 use App\Classroom;
 use Illuminate\Http\Request;
+use File;
+use Storage;
 
 class TeachingController extends Controller
 {
@@ -117,6 +119,7 @@ class TeachingController extends Controller
     public function destroy(Teaching $teaching, $id = null)
     {
         $teaching = Teaching::find($id);
+        Storage::delete("public/".$teaching->teachings_image);
         Teaching::destroy($id);
         return redirect()->route('teaching', ['id' => $teaching->classrooms_id]);
     }
