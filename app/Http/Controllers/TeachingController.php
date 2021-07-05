@@ -41,7 +41,7 @@ class TeachingController extends Controller
      */
     public function store(Request $request)
     {
-        ini_set('memory_limit', '-1'); 
+        // ini_set('memory_limit', '-1'); 
 
         
         if ($request->hasFile('teachings_image')) {
