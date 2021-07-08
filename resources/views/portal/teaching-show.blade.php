@@ -18,7 +18,7 @@
           </div>
           <label>คาบ</label>
           <div class="form-group">
-            <input type="number" class="form-control" name="teachings_class" value="{{$teaching->teachings_class}}"  required>
+            <input type="number" class="form-control" name="teachings_class" value="{{trim($teaching->teachings_class)}}"  required>
           </div>
           <label>วิชา</label>
           <div class="form-group">
