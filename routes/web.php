@@ -43,5 +43,9 @@ Route::group(['prefix' => 'portal'], function(){
         Route::delete('/teaching/destroy/{id}', 'TeachingController@destroy')->name('teaching.destroy');
         Route::delete('/classroom/destroy/{id}', 'ClassroomController@destroy')->name('classroom.destroy');
 
-    });
+        Route::get('/teaching/show/{id}', 'TeachingController@show')->name('teaching.show');
+        Route::put('/teaching/update/{id}', 'TeachingController@update')->name('teaching.update');
+
+
+        });
 });

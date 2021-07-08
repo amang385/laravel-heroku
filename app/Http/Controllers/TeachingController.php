@@ -82,9 +82,13 @@ class TeachingController extends Controller
      * @param  \App\Teaching  $teaching
      * @return \Illuminate\Http\Response
      */
-    public function show(Teaching $teaching)
+    public function show(Teaching $teaching, $id = null)
     {
-        //
+        $teaching = Teaching::find($id);
+        $classroom = Classroom::where([
+            'id' => $teaching->classrooms_id
+        ])->get()->first();
+        return view('portal/teaching-show', compact('teaching', 'classroom', 'id'));
     }
 
     /**
@@ -105,9 +109,32 @@ class TeachingController extends Controller
      * @param  \App\Teaching  $teaching
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teaching $teaching)
+    public function update(Request $request, Teaching $teaching, $id = null)
     {
         //
+        if ($request->hasFile('teachings_image')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            // $contents = $request->file->store('teaching', 'public');
+            $contents = $request->file('teachings_image')->store('teaching', 'public');
+        } else {
+            $contents = $request->teachings_image_old;
+        }
+
+        $teaching = Teaching::find($id);
+        $teaching->teachings_class = $request->teachings_class;
+        $teaching->teachings_subject = $request->teachings_subject;
+        $teaching->teachings_signature = $request->teachings_signature;
+        $teaching->teachings_note = $request->teachings_note;
+        $teaching->teachings_image =  $contents;
+        $teaching->save();
+        
+        return redirect()->route('teaching', ['id'=> $teaching->classrooms_id]);
+        
     }
 
     /**

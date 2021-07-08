@@ -65,15 +65,24 @@
                     <td>
                       <img src="{{asset('storage/'.$teaching->teachings_image)}}" style="max-width: 150px" alt="">
                     </td>
-                    <td class="text-right">
+                    <td class="text-right" width="80">
                       @if (Auth()->user()->type == 1)
-                      <form method="POST" action="{{route('teaching.destroy', ['id' => $teaching->id])}}">
-                          @method('delete')
-                          @csrf
-                        <button type="submit" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-submit ">
-                            <i class="fa fa-times"></i>
-                        </button>
-                      </form>
+                      <div class="row">
+                        <div class="col-6">
+                          <a href="{{route('teaching.show', ['id' => $teaching->id])}}"  rel="tooltip" class="btn btn-info btn-icon btn-sm">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                        </div>
+                        <div class="col-6">
+                          <form method="POST" action="{{route('teaching.destroy', ['id' => $teaching->id])}}">
+                            @method('delete')
+                            @csrf
+                          <button type="submit" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-submit ">
+                              <i class="fa fa-times"></i>
+                          </button>
+                        </form>
+                        </div>
+                      </div>
                       @endif
                     </td>
                   </tr>

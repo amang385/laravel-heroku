@@ -24,7 +24,7 @@
                 <th>
                   ชั้นเรียน
                 </th>
-                <th class="text-right" width="80">
+                <th class="text-right">
                   จัดการ
                 </th>
               </thead>
@@ -37,11 +37,11 @@
                     <td>
                       {{$classroom->classrooms_name}}
                     </td>
-                    <td class="text-right">
+                    <td class="text-right" width="80">
                       <div class="row">
                           <div class="col-6">
                             <a href="/portal/classroom/{{$classroom->id}}/teaching" rel="tooltip" class="btn btn-success btn-icon btn-sm ">
-                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-eye"></i>
                               </a>
                           </div>
                           <div class="col-6">
